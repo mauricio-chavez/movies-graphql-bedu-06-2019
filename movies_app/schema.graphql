@@ -1,0 +1,23 @@
+type Query {
+    hello: String!
+    movies: [Movie!]!
+    movie(id: Int): Movie!
+    directorMovies(id: Int): [Movie!]!
+}
+
+type Mutation {
+    create_movie(director: Int!, title: String!): Movie!
+}
+
+type Director {
+    name: String!
+    birthday: Date!
+    nacionality: String!
+}
+
+type Movie {
+    title: String!
+    year: Int!
+    sinopsis: String!
+    director: Director!
+}
