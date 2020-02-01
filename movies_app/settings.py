@@ -2,9 +2,14 @@
 
 import os
 
+import django_heroku
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = '3jzwn#injsnzq7doo8k0-kv%g9z#9=062(1^=a#b+_bu&*(iu0'
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG', False)
+SECRET_KEY = os.getenv(
+    'DJANGO_SECRET_KEY', '3jzwn#injsnzq7doo8k0-kv%g9z#9=062(1^=a#b+_bu&*(iu0'
+)
 ALLOWED_HOSTS = []
 
 
@@ -113,3 +118,7 @@ STATIC_URL = '/static/'
 GRAPHENE = {
     'SCHEMA': 'movies_app.schema.schema'
 }
+
+# Activate Django-Heroku
+
+django_heroku.settings(locals())
